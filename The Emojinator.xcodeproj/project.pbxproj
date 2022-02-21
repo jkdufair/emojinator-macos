@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		437661B027C3F7BE009BADB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661AF27C3F7BE009BADB2 /* AppDelegate.swift */; };
+		437661B227C3F7BE009BADB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661B127C3F7BE009BADB2 /* ViewController.swift */; };
+		437661B427C3F7C0009BADB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437661B327C3F7C0009BADB2 /* Assets.xcassets */; };
+		437661B727C3F7C0009BADB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 437661B527C3F7C0009BADB2 /* Main.storyboard */; };
+		437661C227C3F7C0009BADB2 /* The_EmojinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661C127C3F7C0009BADB2 /* The_EmojinatorTests.swift */; };
+		437661CC27C3F7C0009BADB2 /* The_EmojinatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */; };
+		437661CE27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		437661BE27C3F7C0009BADB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 437661A427C3F7BE009BADB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 437661AB27C3F7BE009BADB2;
+			remoteInfo = "The Emojinator";
+		};
+		437661C827C3F7C0009BADB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 437661A427C3F7BE009BADB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 437661AB27C3F7BE009BADB2;
+			remoteInfo = "The Emojinator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		437661AC27C3F7BE009BADB2 /* The Emojinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Emojinator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		437661AF27C3F7BE009BADB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		437661B127C3F7BE009BADB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		437661B327C3F7C0009BADB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		437661B627C3F7C0009BADB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		437661B827C3F7C0009BADB2 /* The_Emojinator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = The_Emojinator.entitlements; sourceTree = "<group>"; };
+		437661BD27C3F7C0009BADB2 /* The EmojinatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The EmojinatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		437661C127C3F7C0009BADB2 /* The_EmojinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorTests.swift; sourceTree = "<group>"; };
+		437661C727C3F7C0009BADB2 /* The EmojinatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The EmojinatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITests.swift; sourceTree = "<group>"; };
+		437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		437661A927C3F7BE009BADB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661BA27C3F7C0009BADB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661C427C3F7C0009BADB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		437661A327C3F7BE009BADB2 = {
+			isa = PBXGroup;
+			children = (
+				437661AE27C3F7BE009BADB2 /* The Emojinator */,
+				437661C027C3F7C0009BADB2 /* The EmojinatorTests */,
+				437661CA27C3F7C0009BADB2 /* The EmojinatorUITests */,
+				437661AD27C3F7BE009BADB2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		437661AD27C3F7BE009BADB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				437661AC27C3F7BE009BADB2 /* The Emojinator.app */,
+				437661BD27C3F7C0009BADB2 /* The EmojinatorTests.xctest */,
+				437661C727C3F7C0009BADB2 /* The EmojinatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		437661AE27C3F7BE009BADB2 /* The Emojinator */ = {
+			isa = PBXGroup;
+			children = (
+				437661AF27C3F7BE009BADB2 /* AppDelegate.swift */,
+				437661B127C3F7BE009BADB2 /* ViewController.swift */,
+				437661B327C3F7C0009BADB2 /* Assets.xcassets */,
+				437661B527C3F7C0009BADB2 /* Main.storyboard */,
+				437661B827C3F7C0009BADB2 /* The_Emojinator.entitlements */,
+			);
+			path = "The Emojinator";
+			sourceTree = "<group>";
+		};
+		437661C027C3F7C0009BADB2 /* The EmojinatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				437661C127C3F7C0009BADB2 /* The_EmojinatorTests.swift */,
+			);
+			path = "The EmojinatorTests";
+			sourceTree = "<group>";
+		};
+		437661CA27C3F7C0009BADB2 /* The EmojinatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */,
+				437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */,
+			);
+			path = "The EmojinatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		437661AB27C3F7BE009BADB2 /* The Emojinator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437661D127C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The Emojinator" */;
+			buildPhases = (
+				437661A827C3F7BE009BADB2 /* Sources */,
+				437661A927C3F7BE009BADB2 /* Frameworks */,
+				437661AA27C3F7BE009BADB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Emojinator";
+			productName = "The Emojinator";
+			productReference = 437661AC27C3F7BE009BADB2 /* The Emojinator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		437661BC27C3F7C0009BADB2 /* The EmojinatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437661D427C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The EmojinatorTests" */;
+			buildPhases = (
+				437661B927C3F7C0009BADB2 /* Sources */,
+				437661BA27C3F7C0009BADB2 /* Frameworks */,
+				437661BB27C3F7C0009BADB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				437661BF27C3F7C0009BADB2 /* PBXTargetDependency */,
+			);
+			name = "The EmojinatorTests";
+			productName = "The EmojinatorTests";
+			productReference = 437661BD27C3F7C0009BADB2 /* The EmojinatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		437661C627C3F7C0009BADB2 /* The EmojinatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 437661D727C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The EmojinatorUITests" */;
+			buildPhases = (
+				437661C327C3F7C0009BADB2 /* Sources */,
+				437661C427C3F7C0009BADB2 /* Frameworks */,
+				437661C527C3F7C0009BADB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				437661C927C3F7C0009BADB2 /* PBXTargetDependency */,
+			);
+			name = "The EmojinatorUITests";
+			productName = "The EmojinatorUITests";
+			productReference = 437661C727C3F7C0009BADB2 /* The EmojinatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		437661A427C3F7BE009BADB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					437661AB27C3F7BE009BADB2 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					437661BC27C3F7C0009BADB2 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 437661AB27C3F7BE009BADB2;
+					};
+					437661C627C3F7C0009BADB2 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 437661AB27C3F7BE009BADB2;
+					};
+				};
+			};
+			buildConfigurationList = 437661A727C3F7BE009BADB2 /* Build configuration list for PBXProject "The Emojinator" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 437661A327C3F7BE009BADB2;
+			productRefGroup = 437661AD27C3F7BE009BADB2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				437661AB27C3F7BE009BADB2 /* The Emojinator */,
+				437661BC27C3F7C0009BADB2 /* The EmojinatorTests */,
+				437661C627C3F7C0009BADB2 /* The EmojinatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		437661AA27C3F7BE009BADB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				437661B427C3F7C0009BADB2 /* Assets.xcassets in Resources */,
+				437661B727C3F7C0009BADB2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661BB27C3F7C0009BADB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661C527C3F7C0009BADB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		437661A827C3F7BE009BADB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				437661B227C3F7BE009BADB2 /* ViewController.swift in Sources */,
+				437661B027C3F7BE009BADB2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661B927C3F7C0009BADB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				437661C227C3F7C0009BADB2 /* The_EmojinatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		437661C327C3F7C0009BADB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				437661CE27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift in Sources */,
+				437661CC27C3F7C0009BADB2 /* The_EmojinatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		437661BF27C3F7C0009BADB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 437661AB27C3F7BE009BADB2 /* The Emojinator */;
+			targetProxy = 437661BE27C3F7C0009BADB2 /* PBXContainerItemProxy */;
+		};
+		437661C927C3F7C0009BADB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 437661AB27C3F7BE009BADB2 /* The Emojinator */;
+			targetProxy = 437661C827C3F7C0009BADB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		437661B527C3F7C0009BADB2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				437661B627C3F7C0009BADB2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		437661CF27C3F7C0009BADB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		437661D027C3F7C0009BADB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		437661D227C3F7C0009BADB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "The Emojinator/The_Emojinator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-Emojinator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		437661D327C3F7C0009BADB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "The Emojinator/The_Emojinator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-Emojinator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		437661D527C3F7C0009BADB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-EmojinatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Emojinator.app/Contents/MacOS/The Emojinator";
+			};
+			name = Debug;
+		};
+		437661D627C3F7C0009BADB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-EmojinatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/The Emojinator.app/Contents/MacOS/The Emojinator";
+			};
+			name = Release;
+		};
+		437661D827C3F7C0009BADB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-EmojinatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "The Emojinator";
+			};
+			name = Debug;
+		};
+		437661D927C3F7C0009BADB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E9W3VG64PR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-EmojinatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "The Emojinator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		437661A727C3F7BE009BADB2 /* Build configuration list for PBXProject "The Emojinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437661CF27C3F7C0009BADB2 /* Debug */,
+				437661D027C3F7C0009BADB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		437661D127C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The Emojinator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437661D227C3F7C0009BADB2 /* Debug */,
+				437661D327C3F7C0009BADB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		437661D427C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The EmojinatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437661D527C3F7C0009BADB2 /* Debug */,
+				437661D627C3F7C0009BADB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		437661D727C3F7C0009BADB2 /* Build configuration list for PBXNativeTarget "The EmojinatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				437661D827C3F7C0009BADB2 /* Debug */,
+				437661D927C3F7C0009BADB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 437661A427C3F7BE009BADB2 /* Project object */;
+}
