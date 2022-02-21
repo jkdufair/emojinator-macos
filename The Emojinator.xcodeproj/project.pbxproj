@@ -14,6 +14,8 @@
 		437661C227C3F7C0009BADB2 /* The_EmojinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661C127C3F7C0009BADB2 /* The_EmojinatorTests.swift */; };
 		437661CC27C3F7C0009BADB2 /* The_EmojinatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */; };
 		437661CE27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */; };
+		4379ACA127C42EA800FE8E9F /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 4379ACA027C42EA800FE8E9F /* KeyboardShortcuts */; };
+		4379ACA427C42F5600FE8E9F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4379ACA327C42F5600FE8E9F /* NukeUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4379ACA127C42EA800FE8E9F /* KeyboardShortcuts in Frameworks */,
+				4379ACA427C42F5600FE8E9F /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +143,10 @@
 			dependencies = (
 			);
 			name = "The Emojinator";
+			packageProductDependencies = (
+				4379ACA027C42EA800FE8E9F /* KeyboardShortcuts */,
+				4379ACA327C42F5600FE8E9F /* NukeUI */,
+			);
 			productName = "The Emojinator";
 			productReference = 437661AC27C3F7BE009BADB2 /* The Emojinator.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +219,10 @@
 				Base,
 			);
 			mainGroup = 437661A327C3F7BE009BADB2;
+			packageReferences = (
+				4379AC9F27C42EA800FE8E9F /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */,
+			);
 			productRefGroup = 437661AD27C3F7BE009BADB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -587,6 +599,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4379AC9F27C42EA800FE8E9F /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4379ACA027C42EA800FE8E9F /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4379AC9F27C42EA800FE8E9F /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+		4379ACA327C42F5600FE8E9F /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 437661A427C3F7BE009BADB2 /* Project object */;
 }

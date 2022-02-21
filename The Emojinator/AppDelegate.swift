@@ -32,10 +32,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let btn = self.statusItem.button
         btn?.action = #selector(statusItemClicked(_:))
-        btn?.sendAction(on: [.rightMouseDown])
-        
+        btn?.sendAction(on: [.leftMouseDown, .rightMouseDown])
         let appIcon = NSImage(named: "teams-dumpsterfire-3")
-        //appIcon!.isTemplate = true
         btn?.image = appIcon
         
         // Assign our storyboard contentViewController to our popover
@@ -51,11 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func statusItemClicked(_ sender: NSStatusBarButton) {
-        let isRightClickEvent = NSApp.currentEvent?.isRightClick ?? false
-        
-        if isRightClickEvent {
+        if NSApp.currentEvent?.type == .rightMouseDown {
             self.showMenu()
         } else {
+            self.popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
         }
     }
     
@@ -76,13 +73,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.popUp(positioning: nil, at: .zero, in: tmpWindow.contentView)
     }
 
-}
-
-// MARK: - Extensions
-
-extension NSEvent {
-    var isRightClick: Bool {
-        self.type == .rightMouseDown
-    }
 }
 

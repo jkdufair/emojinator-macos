@@ -6,8 +6,11 @@
 //
 
 import Cocoa
+import NukeUI
 
 class ViewController: NSViewController {
+    
+    @IBOutlet weak var lazyImageView: LazyImageView!
     
     override func loadView() {
         super.loadView()
@@ -15,6 +18,8 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lazyImageView.source = "https://emoji-server.azurewebsites.net/emoji/boom2"        
     }
 
     override var representedObject: Any? {
@@ -22,7 +27,5 @@ class ViewController: NSViewController {
         // Update the view, if already loaded.
         }
     }
-
-
 }
 
