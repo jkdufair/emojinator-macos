@@ -45,6 +45,7 @@
 		437661C727C3F7C0009BADB2 /* The EmojinatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The EmojinatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITests.swift; sourceTree = "<group>"; };
 		437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		437661DA27C41348009BADB2 /* The-Emojinator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "The-Emojinator-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 		437661AE27C3F7BE009BADB2 /* The Emojinator */ = {
 			isa = PBXGroup;
 			children = (
+				437661DA27C41348009BADB2 /* The-Emojinator-Info.plist */,
 				437661AF27C3F7BE009BADB2 /* AppDelegate.swift */,
 				437661B127C3F7BE009BADB2 /* ViewController.swift */,
 				437661B327C3F7C0009BADB2 /* Assets.xcassets */,
@@ -427,6 +429,7 @@
 				DEVELOPMENT_TEAM = E9W3VG64PR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "The-Emojinator-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -434,6 +437,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-Emojinator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -454,6 +458,7 @@
 				DEVELOPMENT_TEAM = E9W3VG64PR;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "The-Emojinator-Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -461,6 +466,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.dufair.The-Emojinator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
