@@ -72,6 +72,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menu.popUp(positioning: nil, at: .zero, in: tmpWindow.contentView)
     }
-
 }
 

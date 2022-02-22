@@ -15,7 +15,10 @@
 		437661CC27C3F7C0009BADB2 /* The_EmojinatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */; };
 		437661CE27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */; };
 		4379ACA127C42EA800FE8E9F /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 4379ACA027C42EA800FE8E9F /* KeyboardShortcuts */; };
-		4379ACA427C42F5600FE8E9F /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4379ACA327C42F5600FE8E9F /* NukeUI */; };
+		4379ACA627C5389600FE8E9F /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379ACA527C5389600FE8E9F /* Api.swift */; };
+		4379ACAD27C565FC00FE8E9F /* EmojiItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379ACAB27C565FC00FE8E9F /* EmojiItem.swift */; };
+		4379ACAE27C565FC00FE8E9F /* EmojiItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4379ACAC27C565FC00FE8E9F /* EmojiItem.xib */; };
+		4379ACB127C577E900FE8E9F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4379ACB027C577E900FE8E9F /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		437661CB27C3F7C0009BADB2 /* The_EmojinatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITests.swift; sourceTree = "<group>"; };
 		437661CD27C3F7C0009BADB2 /* The_EmojinatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_EmojinatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		437661DA27C41348009BADB2 /* The-Emojinator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "The-Emojinator-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4379ACA527C5389600FE8E9F /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		4379ACAB27C565FC00FE8E9F /* EmojiItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiItem.swift; sourceTree = "<group>"; };
+		4379ACAC27C565FC00FE8E9F /* EmojiItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4379ACB127C577E900FE8E9F /* Kingfisher in Frameworks */,
 				4379ACA127C42EA800FE8E9F /* KeyboardShortcuts in Frameworks */,
-				4379ACA427C42F5600FE8E9F /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +112,9 @@
 				437661B327C3F7C0009BADB2 /* Assets.xcassets */,
 				437661B527C3F7C0009BADB2 /* Main.storyboard */,
 				437661B827C3F7C0009BADB2 /* The_Emojinator.entitlements */,
+				4379ACA527C5389600FE8E9F /* Api.swift */,
+				4379ACAB27C565FC00FE8E9F /* EmojiItem.swift */,
+				4379ACAC27C565FC00FE8E9F /* EmojiItem.xib */,
 			);
 			path = "The Emojinator";
 			sourceTree = "<group>";
@@ -145,7 +154,7 @@
 			name = "The Emojinator";
 			packageProductDependencies = (
 				4379ACA027C42EA800FE8E9F /* KeyboardShortcuts */,
-				4379ACA327C42F5600FE8E9F /* NukeUI */,
+				4379ACB027C577E900FE8E9F /* Kingfisher */,
 			);
 			productName = "The Emojinator";
 			productReference = 437661AC27C3F7BE009BADB2 /* The Emojinator.app */;
@@ -221,7 +230,7 @@
 			mainGroup = 437661A327C3F7BE009BADB2;
 			packageReferences = (
 				4379AC9F27C42EA800FE8E9F /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
-				4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */,
+				4379ACAF27C577E900FE8E9F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 437661AD27C3F7BE009BADB2 /* Products */;
 			projectDirPath = "";
@@ -241,6 +250,7 @@
 			files = (
 				437661B427C3F7C0009BADB2 /* Assets.xcassets in Resources */,
 				437661B727C3F7C0009BADB2 /* Main.storyboard in Resources */,
+				4379ACAE27C565FC00FE8E9F /* EmojiItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4379ACA627C5389600FE8E9F /* Api.swift in Sources */,
+				4379ACAD27C565FC00FE8E9F /* EmojiItem.swift in Sources */,
 				437661B227C3F7BE009BADB2 /* ViewController.swift in Sources */,
 				437661B027C3F7BE009BADB2 /* AppDelegate.swift in Sources */,
 			);
@@ -609,12 +621,12 @@
 				kind = branch;
 			};
 		};
-		4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+		4379ACAF27C577E900FE8E9F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/NukeUI";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -625,10 +637,10 @@
 			package = 4379AC9F27C42EA800FE8E9F /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
 		};
-		4379ACA327C42F5600FE8E9F /* NukeUI */ = {
+		4379ACB027C577E900FE8E9F /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4379ACA227C42F5600FE8E9F /* XCRemoteSwiftPackageReference "NukeUI" */;
-			productName = NukeUI;
+			package = 4379ACAF27C577E900FE8E9F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

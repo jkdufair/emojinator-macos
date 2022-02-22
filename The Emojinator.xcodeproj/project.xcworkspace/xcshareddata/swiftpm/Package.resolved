@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Gifu",
-        "repositoryURL": "https://github.com/kaishin/Gifu",
-        "state": {
-          "branch": null,
-          "revision": "51f2eab32903e336f590c013267cfa4d7f8b06c4",
-          "version": "3.3.1"
-        }
-      },
-      {
         "package": "KeyboardShortcuts",
         "repositoryURL": "https://github.com/sindresorhus/KeyboardShortcuts",
         "state": {
@@ -20,21 +11,12 @@
         }
       },
       {
-        "package": "Nuke",
-        "repositoryURL": "https://github.com/kean/Nuke.git",
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {
           "branch": null,
-          "revision": "78fa963b8491fc520791d8c2a509f1b8593d8aae",
-          "version": "10.7.1"
-        }
-      },
-      {
-        "package": "NukeUI",
-        "repositoryURL": "https://github.com/kean/NukeUI",
-        "state": {
-          "branch": null,
-          "revision": "71398392943f2538fd0f2ebc6f282920f6775b0c",
-          "version": "0.8.0"
+          "revision": "0c02c46cfdc0656ce74fd0963a75e5000a0b7f23",
+          "version": "7.1.2"
         }
       }
     ]
