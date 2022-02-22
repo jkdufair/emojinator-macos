@@ -711,7 +711,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MJf-Kl-y0Y">
-                                <rect key="frame" x="20" y="319" width="210" height="21"/>
+                                <rect key="frame" x="20" y="309" width="210" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="0M1-Y3-S5U">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -722,17 +722,17 @@
                                 </connections>
                             </textField>
                             <scrollView wantsLayer="YES" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-R2-Qmf">
-                                <rect key="frame" x="20" y="20" width="210" height="291"/>
+                                <rect key="frame" x="20" y="31" width="210" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="14i-hT-Hog">
-                                    <rect key="frame" x="0.0" y="0.0" width="210" height="291"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="210" height="250"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="odb-um-hZ8">
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="2" minimumLineSpacing="2" id="mOU-PR-gWo">
-                                                <size key="itemSize" width="24" height="24"/>
+                                                <size key="itemSize" width="26" height="26"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
@@ -753,7 +753,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="MJf-Kl-y0Y" secondAttribute="trailing" constant="20" id="DfX-lj-5l4"/>
-                            <constraint firstItem="MJf-Kl-y0Y" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="JAm-Xy-qSy"/>
+                            <constraint firstItem="MJf-Kl-y0Y" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="JAm-Xy-qSy"/>
                             <constraint firstItem="MJf-Kl-y0Y" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="KLL-11-d6u"/>
                         </constraints>
                     </view>

@@ -7,15 +7,15 @@
 
 import Cocoa
 import Kingfisher
+import Fuse
 
 class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDataSource {
     
     @IBOutlet weak var emojiFilter: NSTextField!
     @IBOutlet weak var emojiCollectionView: NSCollectionView!
     
-    var emojiFilterText: String = ""
     var emojiList = [String]()
-    let emojiItem = "EmojiItem"
+    var filteredEmojiList = [String]()
     
     override func loadView() {
         super.loadView()
@@ -26,41 +26,38 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
                 
         Api().loadEmojiList { (incomingEmojiList) in
             self.emojiList = incomingEmojiList
-//            let emojisPerRow = self.emojiGridView.numberOfColumns
-//            let emoji2d: [[String]] = stride(from: 0, through: 200, by: emojisPerRow).map {
-//                Array(self.emojiList[$0..<min($0+emojisPerRow, self.emojiList.count)])
-//            }
-//            for emojiRow in emoji2d {
-//                self.emojiGridView.addRow(with: emojiRow.map {
-//                    let view = LazyImageView()
-//                    view.source = "https://emoji-server.azurewebsites.net/emoji/\($0)"
-//                    return view
-//                })
-//            }
-        }
-}
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
+            self.filteredEmojiList = incomingEmojiList
         }
     }
 
-    
+    override var representedObject: Any? {
+        didSet { }
+    }
+
     func controlTextDidChange(_ obj: Notification) {
-        emojiFilterText = emojiFilter.stringValue
+        let emojiFilterText = emojiFilter.stringValue
+        if (emojiFilterText == "") {
+            filteredEmojiList = emojiList
+        } else {
+            let fuse = Fuse(location: 0, distance: 20, threshold: 0.99, maxPatternLength: 32, isCaseSensitive: false, tokenize: false)
+            let results = fuse.search(emojiFilterText, in: emojiList)
+            filteredEmojiList = results.map { (index, _, matchedRanges) in
+                return emojiList[index]
+            }
+            filteredEmojiList = Array(filteredEmojiList[0...10])
+        }
+        emojiCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojiList.count
+        return filteredEmojiList.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: emojiItem), for: indexPath)
-        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(emojiList[indexPath[1]])")
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
+        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])")
         item.imageView?.kf.indicatorType = .activity
-        KF.url(url)
-            .set(to: item.imageView!)
+        KF.url(url).set(to: item.imageView!)
         item.imageView?.animates = true
         return item
     }
