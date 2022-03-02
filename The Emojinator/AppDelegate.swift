@@ -11,22 +11,19 @@ import KeyboardShortcuts
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var window: NSWindow?
+    private let windowSize: NSSize = NSSize(width: 250, height: 350)
     
     var statusItem: NSStatusItem = {
         NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     }()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let windowSize = NSSize(width: 250, height: 350)
-        let location = NSEvent.mouseLocation
-        let screens = NSScreen.screens
-        let screenWithMouse = (screens.first { NSMouseInRect(location, $0.frame, false) })
-        let screenSize = screenWithMouse?.frame.size ?? .zero
-        let rect = NSMakeRect(screenWithMouse!.frame.minX + screenSize.width/2 - windowSize.width/2, screenWithMouse!.frame.minY + screenSize.height/2 - windowSize.height/2, windowSize.width, windowSize.height)
+        let origin = self.frameOriginForScreenWithCursor()
+        let rect = NSMakeRect(origin.x, origin.y, windowSize.width, windowSize.height)
         window = NSWindow(contentRect: rect, styleMask: [.titled], backing: .buffered, defer: false)
         window?.title = "The Emojinator"
 
-        // Fetch storyboard and gather contentController for our popover
+        // Fetch storyboard and gather contentController for our window
         let storyboard = NSStoryboard(name: "Main", bundle: Bundle.main)
         guard let viewController = storyboard.instantiateController(withIdentifier: "MainViewController") as? NSViewController else {
             print ("Unable to instantiate storyboard view controller")
@@ -42,11 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window?.contentViewController = viewController
         
         KeyboardShortcuts.onKeyUp(for: .showPopup) {
-            let location = NSEvent.mouseLocation
-            let screens = NSScreen.screens
-            let screenWithMouse = (screens.first { NSMouseInRect(location, $0.frame, false) })
-            let screenSize = screenWithMouse?.frame.size ?? .zero
-            self.window?.setFrameOrigin(NSPoint(x: screenWithMouse!.frame.minX + screenSize.width/2 - windowSize.width/2, y: screenWithMouse!.frame.minY + screenSize.height/2 - windowSize.height/2))
+            self.window?.setFrameOrigin(self.frameOriginForScreenWithCursor())
             NSApp.activate(ignoringOtherApps: true)
             self.window?.orderFrontRegardless()
             self.window?.makeKey()
@@ -59,6 +52,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    func frameOriginForScreenWithCursor() -> NSPoint {
+        let location = NSEvent.mouseLocation
+        let screens = NSScreen.screens
+        let screenWithMouse = (screens.first { NSMouseInRect(location, $0.frame, false) })
+        let screenSize = screenWithMouse?.frame.size ?? .zero
+        return NSPoint(x: screenWithMouse!.frame.minX + screenSize.width/2 - self.windowSize.width/2,
+                       y: screenWithMouse!.frame.minY + screenSize.height/2 - self.windowSize.height/2)
     }
     
     @objc func statusItemClicked(_ sender: NSStatusBarButton) {
