@@ -28,6 +28,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         Api().loadEmojiList { (incomingEmojiList) in
             self.emojiList = incomingEmojiList
             self.filteredEmojiList = incomingEmojiList
+            self.emojiCollectionView.reloadData()
         }
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
@@ -75,7 +76,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         self.emojiFilter.stringValue = ""
         self.filteredEmojiList = self.emojiList
         emojiCollectionView.reloadData()
-        self.view.window?.close()
+        self.view.window?.orderOut(nil)
     }
     
     func myKeyDown(with event: NSEvent) -> Bool {
@@ -84,16 +85,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
            NSApplication.shared.keyWindow === locWindow else { return false }
         switch Int( event.keyCode) {
         case kVK_DownArrow:
-            print("down arrow")
             return true
         case kVK_UpArrow:
-            print("up arrow")
             return true
         case kVK_LeftArrow:
-            print("left arrow")
             return true
         case kVK_RightArrow:
-            print("right arrow")
             return true
         case kVK_Escape:
             resetView()
@@ -103,7 +100,6 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             resetView()
             return true
         default:
-            print(event.keyCode)
             return false
         }
     }

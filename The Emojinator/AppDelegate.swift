@@ -10,26 +10,28 @@ import KeyboardShortcuts
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    private var window: NSWindow?
+    
     var statusItem: NSStatusItem = {
         NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     }()
     
-    var popover: NSPopover = {
-        let popover = NSPopover()
-        popover.behavior = .transient
-        return popover
-    }()
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        let windowSize = NSSize(width: 250, height: 350)
+        let location = NSEvent.mouseLocation
+        let screens = NSScreen.screens
+        let screenWithMouse = (screens.first { NSMouseInRect(location, $0.frame, false) })
+        let screenSize = screenWithMouse?.frame.size ?? .zero
+        let rect = NSMakeRect(screenWithMouse!.frame.minX + screenSize.width/2 - windowSize.width/2, screenWithMouse!.frame.minY + screenSize.height/2 - windowSize.height/2, windowSize.width, windowSize.height)
+        window = NSWindow(contentRect: rect, styleMask: [.titled], backing: .buffered, defer: false)
+        window?.title = "The Emojinator"
+
         // Fetch storyboard and gather contentController for our popover
         let storyboard = NSStoryboard(name: "Main", bundle: Bundle.main)
-        guard let windowController = storyboard.instantiateController(withIdentifier: "MainWindowController") as? NSWindowController else {
-            print ("Unable to instantiate storyboard window controller")
+        guard let viewController = storyboard.instantiateController(withIdentifier: "MainViewController") as? NSViewController else {
+            print ("Unable to instantiate storyboard view controller")
             return
         }
-        let contentViewController = windowController.contentViewController
         
         let btn = self.statusItem.button
         btn?.action = #selector(statusItemClicked(_:))
@@ -37,13 +39,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let appIcon = NSImage(named: "teams-dumpsterfire-3")
         btn?.image = appIcon
         
-        // Assign our storyboard contentViewController to our popover
-        self.popover.contentViewController = contentViewController
+        window?.contentViewController = viewController
         
         KeyboardShortcuts.onKeyUp(for: .showPopup) {
-            print("shortcut pressed")
-            self.popover.show(relativeTo: btn!.bounds, of: btn!, preferredEdge: .minY)
-            
+            let location = NSEvent.mouseLocation
+            let screens = NSScreen.screens
+            let screenWithMouse = (screens.first { NSMouseInRect(location, $0.frame, false) })
+            let screenSize = screenWithMouse?.frame.size ?? .zero
+            self.window?.setFrameOrigin(NSPoint(x: screenWithMouse!.frame.minX + screenSize.width/2 - windowSize.width/2, y: screenWithMouse!.frame.minY + screenSize.height/2 - windowSize.height/2))
+            NSApp.activate(ignoringOtherApps: true)
+            self.window?.orderFrontRegardless()
+            self.window?.makeKey()
         }
     }
 
@@ -59,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if NSApp.currentEvent?.type == .rightMouseDown {
             self.showMenu()
         } else {
-            self.popover.show(relativeTo: sender.bounds, of: sender, preferredEdge: .minY)
+            self.window?.makeKeyAndOrderFront(nil)
         }
     }
     
