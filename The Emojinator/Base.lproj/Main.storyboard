@@ -711,7 +711,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="210" height="263"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="2" minimumLineSpacing="2" id="mOU-PR-gWo">
-                                                <size key="itemSize" width="26" height="26"/>
+                                                <size key="itemSize" width="30" height="30"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>

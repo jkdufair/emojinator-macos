@@ -85,6 +85,11 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
            NSApplication.shared.keyWindow === locWindow else { return false }
         switch Int( event.keyCode) {
         case kVK_DownArrow:
+            print(emojiCollectionView.selectionIndexPaths)
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.emojiCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
+            self.highlightItems(true, atIndexPaths: [indexPath])
+            print(emojiCollectionView.selectionIndexPaths)
             return true
         case kVK_UpArrow:
             return true
@@ -101,6 +106,17 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             return true
         default:
             return false
+        }
+    }
+    
+    func highlightItems(_ selected: Bool, atIndexPaths: Set<IndexPath>) {
+        for indexPath in atIndexPaths {
+            guard let item = self.emojiCollectionView.item(at: indexPath) else { continue }
+
+            item.view.layer!.borderWidth = 3.0
+            item.view.layer!.cornerRadius = 6.0
+            let color: CGColor = NSColor.blue.cgColor
+            item.view.layer!.borderColor = color
         }
     }
 }
