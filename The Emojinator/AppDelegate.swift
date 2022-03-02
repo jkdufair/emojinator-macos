@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import KeyboardShortcuts
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -38,6 +39,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Assign our storyboard contentViewController to our popover
         self.popover.contentViewController = contentViewController
+        
+        KeyboardShortcuts.onKeyUp(for: .showPopup) {
+            print("shortcut pressed")
+            self.popover.show(relativeTo: btn!.bounds, of: btn!, preferredEdge: .minY)
+            
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

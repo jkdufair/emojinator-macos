@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		433714B727CFED5A00EB3655 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433714B627CFED5A00EB3655 /* Constants.swift */; };
 		437661B027C3F7BE009BADB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661AF27C3F7BE009BADB2 /* AppDelegate.swift */; };
 		437661B227C3F7BE009BADB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437661B127C3F7BE009BADB2 /* ViewController.swift */; };
 		437661B427C3F7C0009BADB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 437661B327C3F7C0009BADB2 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		433714B627CFED5A00EB3655 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		437661AC27C3F7BE009BADB2 /* The Emojinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Emojinator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		437661AF27C3F7BE009BADB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		437661B127C3F7BE009BADB2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				4379ACA527C5389600FE8E9F /* Api.swift */,
 				4379ACAB27C565FC00FE8E9F /* EmojiItem.swift */,
 				4379ACAC27C565FC00FE8E9F /* EmojiItem.xib */,
+				433714B627CFED5A00EB3655 /* Constants.swift */,
 			);
 			path = "The Emojinator";
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				433714B727CFED5A00EB3655 /* Constants.swift in Sources */,
 				4379ACA627C5389600FE8E9F /* Api.swift in Sources */,
 				4379ACAD27C565FC00FE8E9F /* EmojiItem.swift in Sources */,
 				437661B227C3F7BE009BADB2 /* ViewController.swift in Sources */,

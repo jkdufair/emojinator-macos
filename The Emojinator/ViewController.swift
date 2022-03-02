@@ -8,6 +8,7 @@
 import Cocoa
 import Kingfisher
 import Fuse
+import Carbon.HIToolbox.Events
 
 class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDataSource {
     
@@ -28,12 +29,20 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             self.emojiList = incomingEmojiList
             self.filteredEmojiList = incomingEmojiList
         }
+        
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
+            if self.myKeyDown(with: $0) {
+                return nil
+            } else {
+                return $0
+            }
+        }
     }
 
     override var representedObject: Any? {
         didSet { }
     }
-
+    
     func controlTextDidChange(_ obj: Notification) {
         let emojiFilterText = emojiFilter.stringValue
         if (emojiFilterText == "") {
@@ -60,5 +69,42 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         KF.url(url).set(to: item.imageView!)
         item.imageView?.animates = true
         return item
+    }
+    
+    func resetView() {
+        self.emojiFilter.stringValue = ""
+        self.filteredEmojiList = self.emojiList
+        emojiCollectionView.reloadData()
+        self.view.window?.close()
+    }
+    
+    func myKeyDown(with event: NSEvent) -> Bool {
+        // handle keyDown only if current window has focus, i.e. is keyWindow
+        guard let locWindow = self.view.window,
+           NSApplication.shared.keyWindow === locWindow else { return false }
+        switch Int( event.keyCode) {
+        case kVK_DownArrow:
+            print("down arrow")
+            return true
+        case kVK_UpArrow:
+            print("up arrow")
+            return true
+        case kVK_LeftArrow:
+            print("left arrow")
+            return true
+        case kVK_RightArrow:
+            print("right arrow")
+            return true
+        case kVK_Escape:
+            resetView()
+            return true
+        case kVK_Return:
+            // copy emoji to pasteboard
+            resetView()
+            return true
+        default:
+            print(event.keyCode)
+            return false
+        }
     }
 }
