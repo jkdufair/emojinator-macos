@@ -10,13 +10,14 @@ import Kingfisher
 import Fuse
 import Carbon.HIToolbox.Events
 
-class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDataSource {
+class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDataSource, NSCollectionViewDelegate {
     
     @IBOutlet weak var emojiFilter: NSTextField!
     @IBOutlet weak var emojiCollectionView: NSCollectionView!
     
     var emojiList = [String]()
     var filteredEmojiList = [String]()
+    var selectedEmoji: String? = nil
     
     override func loadView() {
         super.loadView()
@@ -25,12 +26,14 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
                 
+        // Load the emojis from the server
         Api().loadEmojiList { (incomingEmojiList) in
             self.emojiList = incomingEmojiList
             self.filteredEmojiList = incomingEmojiList
             self.emojiCollectionView.reloadData()
         }
         
+        // Monitor and react to keystrokes
         NSEvent.addLocalMonitorForEvents(matching: .keyDown) {
             if self.myKeyDown(with: $0) {
                 return nil
@@ -43,7 +46,63 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     override var representedObject: Any? {
         didSet { }
     }
+
     
+    // MARK: NSCollectionViewDataSource methods
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filteredEmojiList.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
+        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])")
+        item.imageView?.kf.indicatorType = .activity
+        KF.url(url).set(to: item.imageView!)
+        item.imageView?.animates = true
+        return item
+    }
+    
+    // MARK: Utility functions
+    
+    func resetView() {
+        self.emojiFilter.stringValue = ""
+        self.emojiFilter.becomeFirstResponder()
+        self.filteredEmojiList = self.emojiList
+        emojiCollectionView.reloadData()
+        self.view.window?.orderOut(nil)
+    }
+    
+    func selectEmoji(newIndex: Int) {
+        let indexPath = IndexPath(item: newIndex, section: 0)
+        let selectionRect = self.emojiCollectionView.frameForItem(at: newIndex)
+        self.emojiCollectionView.scrollToVisible(selectionRect)
+        self.emojiCollectionView.selectionIndexPaths = [indexPath]
+        self.selectedEmoji = self.filteredEmojiList[newIndex]
+    }
+    
+    private func copySelectedEmojiToPasteboard () {
+        if (self.selectedEmoji == nil) { return }
+        let pb = NSPasteboard.general
+        pb.clearContents()
+        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)\"/>",
+                     forType: NSPasteboard.PasteboardType.html)
+        let teams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
+        teams[0].activate(options: NSApplication.ActivationOptions.activateAllWindows)
+    }
+    
+    // MARK: NSCollectionViewDelegate methods
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        print(indexPaths)
+        selectEmoji(newIndex: collectionView.selectionIndexes.first!)
+        copySelectedEmojiToPasteboard()
+        resetView()
+    }
+    
+    // MARK: Keyboard controls
+    
+    // Fuzzy filter the grid of emojis
     func controlTextDidChange(_ obj: Notification) {
         let emojiFilterText = emojiFilter.stringValue
         if (emojiFilterText == "") {
@@ -59,64 +118,36 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         emojiCollectionView.reloadData()
     }
     
-    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredEmojiList.count
-    }
-    
-    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
-        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])")
-        item.imageView?.kf.indicatorType = .activity
-        KF.url(url).set(to: item.imageView!)
-        item.imageView?.animates = true
-        return item
-    }
-    
-    func resetView() {
-        self.emojiFilter.stringValue = ""
-        self.filteredEmojiList = self.emojiList
-        emojiCollectionView.reloadData()
-        self.view.window?.orderOut(nil)
-    }
-    
+    // Navigation & actions
     func myKeyDown(with event: NSEvent) -> Bool {
         // handle keyDown only if current window has focus, i.e. is keyWindow
         guard let locWindow = self.view.window,
            NSApplication.shared.keyWindow === locWindow else { return false }
+
+
+        let index = self.emojiCollectionView.selectionIndexes.first
         switch Int( event.keyCode) {
         case kVK_DownArrow:
-            print(emojiCollectionView.selectionIndexPaths)
-            let indexPath = IndexPath(item: 0, section: 0)
-            self.emojiCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
-            self.highlightItems(true, atIndexPaths: [indexPath])
-            print(emojiCollectionView.selectionIndexPaths)
+            selectEmoji(newIndex: min(index == nil ? 0 : index! + 9, filteredEmojiList.count))
             return true
         case kVK_UpArrow:
+            selectEmoji(newIndex: max(index == nil ? 0 : index! - 9, 0))
             return true
         case kVK_LeftArrow:
+            selectEmoji(newIndex: max(index == nil ? 0 : index! - 1, 0))
             return true
         case kVK_RightArrow:
+            selectEmoji(newIndex: min(index == nil ? 0 : index! + 1, filteredEmojiList.count))
             return true
         case kVK_Escape:
             resetView()
             return true
         case kVK_Return:
-            // copy emoji to pasteboard
+            copySelectedEmojiToPasteboard()
             resetView()
             return true
         default:
             return false
-        }
-    }
-    
-    func highlightItems(_ selected: Bool, atIndexPaths: Set<IndexPath>) {
-        for indexPath in atIndexPaths {
-            guard let item = self.emojiCollectionView.item(at: indexPath) else { continue }
-
-            item.view.layer!.borderWidth = 3.0
-            item.view.layer!.cornerRadius = 6.0
-            let color: CGColor = NSColor.blue.cgColor
-            item.view.layer!.borderColor = color
         }
     }
 }

@@ -14,4 +14,11 @@ class EmojiItem: NSCollectionViewItem {
         // Do view setup here.
     }
     
+    override var isSelected: Bool {
+        didSet {
+            self.view.wantsLayer = true
+            self.view.layer?.backgroundColor = (isSelected ? NSColor.controlAccentColor.cgColor : NSColor.clear.cgColor)
+            self.view.setNeedsDisplay(self.view.bounds)
+        }
+    }
 }

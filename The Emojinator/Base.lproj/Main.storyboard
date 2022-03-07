@@ -686,11 +686,11 @@
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="The_Emojinator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="425" height="350"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MJf-Kl-y0Y">
-                                <rect key="frame" x="20" y="309" width="210" height="21"/>
+                                <rect key="frame" x="20" y="309" width="385" height="21"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="0M1-Y3-S5U">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -700,32 +700,35 @@
                                     <outlet property="delegate" destination="XfG-lQ-9wD" id="fBj-zB-F5Q"/>
                                 </connections>
                             </textField>
-                            <scrollView wantsLayer="YES" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-R2-Qmf">
-                                <rect key="frame" x="20" y="31" width="210" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <scrollView wantsLayer="YES" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-R2-Qmf">
+                                <rect key="frame" x="20" y="38" width="385" height="263"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="14i-hT-Hog">
-                                    <rect key="frame" x="0.0" y="0.0" width="210" height="263"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="385" height="263"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="odb-um-hZ8">
-                                            <rect key="frame" x="0.0" y="0.0" width="210" height="263"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="385" height="263"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="2" minimumLineSpacing="2" id="mOU-PR-gWo">
-                                                <size key="itemSize" width="30" height="30"/>
+                                                <size key="itemSize" width="36" height="36"/>
+                                                <edgeInsets key="sectionInset" left="0.0" right="2" top="2" bottom="2"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <outlet property="dataSource" destination="XfG-lQ-9wD" id="non-ki-BCW"/>
+                                                <outlet property="delegate" destination="XfG-lQ-9wD" id="KC6-db-3hK"/>
                                             </connections>
                                         </collectionView>
                                     </subviews>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="yrw-hc-aWe">
-                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                    <rect key="frame" x="-100" y="-100" width="370" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="VEn-9a-5t0">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <rect key="frame" x="370" y="0.0" width="15" height="263"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -743,7 +746,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="265"/>
+            <point key="canvasLocation" x="74.5" y="265"/>
         </scene>
     </scenes>
 </document>
