@@ -14,6 +14,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     
     @IBOutlet weak var emojiFilter: NSTextField!
     @IBOutlet weak var emojiCollectionView: NSCollectionView!
+    @IBOutlet weak var emojiLabel: NSTextField!
+    @IBOutlet weak var selectedEmojiView: NSImageView!
     
     var emojiList = [String]()
     var filteredEmojiList = [String]()
@@ -47,7 +49,6 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         didSet { }
     }
 
-    
     // MARK: NSCollectionViewDataSource methods
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,6 +80,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         self.emojiCollectionView.scrollToVisible(selectionRect)
         self.emojiCollectionView.selectionIndexPaths = [indexPath]
         self.selectedEmoji = self.filteredEmojiList[newIndex]
+
+        self.emojiLabel.stringValue = ":\(self.selectedEmoji!):"
+        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)")
+        selectedEmojiView.kf.indicatorType = .activity
+        KF.url(url).set(to: selectedEmojiView)
+        selectedEmojiView.animates = true
     }
     
     private func copySelectedEmojiToPasteboard () {
@@ -88,13 +95,18 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)\"/>",
                      forType: NSPasteboard.PasteboardType.html)
         let teams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
-        teams[0].activate(options: NSApplication.ActivationOptions.activateAllWindows)
+        if (!teams.isEmpty) {
+            teams[0].activate(options: NSApplication.ActivationOptions.activateAllWindows)
+        }
+    }
+    
+    public func didPopUp() {
+        selectEmoji(newIndex: 0)
     }
     
     // MARK: NSCollectionViewDelegate methods
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(indexPaths)
         selectEmoji(newIndex: collectionView.selectionIndexes.first!)
         copySelectedEmojiToPasteboard()
         resetView()
@@ -113,9 +125,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             filteredEmojiList = results.map { (index, _, matchedRanges) in
                 return emojiList[index]
             }
-            filteredEmojiList = Array(filteredEmojiList[0...10])
+            filteredEmojiList = Array(filteredEmojiList[0...30])
         }
         emojiCollectionView.reloadData()
+        selectEmoji(newIndex: 0)
     }
     
     // Navigation & actions
@@ -126,12 +139,13 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
 
 
         let index = self.emojiCollectionView.selectionIndexes.first
+        let horizontalItemCount = self.emojiCollectionView.enclosingScrollView?.verticalScroller?.isHidden == true ? 10 : 9
         switch Int( event.keyCode) {
         case kVK_DownArrow:
-            selectEmoji(newIndex: min(index == nil ? 0 : index! + 9, filteredEmojiList.count))
+            selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount, filteredEmojiList.count))
             return true
         case kVK_UpArrow:
-            selectEmoji(newIndex: max(index == nil ? 0 : index! - 9, 0))
+            selectEmoji(newIndex: max(index == nil ? 0 : index! - horizontalItemCount, 0))
             return true
         case kVK_LeftArrow:
             selectEmoji(newIndex: max(index == nil ? 0 : index! - 1, 0))

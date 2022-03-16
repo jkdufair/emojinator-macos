@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let btn = self.statusItem.button
         btn?.action = #selector(statusItemClicked(_:))
-        btn?.sendAction(on: [.leftMouseDown, .rightMouseDown])
+        btn?.sendAction(on: [.rightMouseDown])
         let appIcon = NSImage(named: "teams-dumpsterfire-3")
         btn?.image = appIcon
         
@@ -43,6 +43,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.activate(ignoringOtherApps: true)
             self.window?.orderFrontRegardless()
             self.window?.makeKey()
+            let vc = viewController as? ViewController
+            if (vc != nil) {
+                vc!.didPopUp()
+            }
         }
     }
 
@@ -66,8 +70,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func statusItemClicked(_ sender: NSStatusBarButton) {
         if NSApp.currentEvent?.type == .rightMouseDown {
             self.showMenu()
-        } else {
-            self.window?.makeKeyAndOrderFront(nil)
         }
     }
     
