@@ -57,7 +57,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
-        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])")
+        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])?s=24")
         item.imageView?.kf.indicatorType = .activity
         KF.url(url).set(to: item.imageView!)
         item.imageView?.animates = true
@@ -82,17 +82,17 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         self.selectedEmoji = self.filteredEmojiList[newIndex]
 
         self.emojiLabel.stringValue = ":\(self.selectedEmoji!):"
-        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)")
+        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=48")
         selectedEmojiView.kf.indicatorType = .activity
         KF.url(url).set(to: selectedEmojiView)
         selectedEmojiView.animates = true
     }
     
-    private func copySelectedEmojiToPasteboard () {
+    private func copySelectedEmojiToPasteboard (size: Int) {
         if (self.selectedEmoji == nil) { return }
         let pb = NSPasteboard.general
         pb.clearContents()
-        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)\"/>",
+        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\"/>",
                      forType: NSPasteboard.PasteboardType.html)
         let teams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
         if (!teams.isEmpty) {
@@ -107,8 +107,11 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     // MARK: NSCollectionViewDelegate methods
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        var size = 24
+        if (NSEvent.modifierFlags.contains(.control)) { size = 36 }
+        if (NSEvent.modifierFlags.contains(.option)) { size = 48 }
         selectEmoji(newIndex: collectionView.selectionIndexes.first!)
-        copySelectedEmojiToPasteboard()
+        copySelectedEmojiToPasteboard(size: size)
         resetView()
     }
     
@@ -137,10 +140,9 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         guard let locWindow = self.view.window,
            NSApplication.shared.keyWindow === locWindow else { return false }
 
-
         let index = self.emojiCollectionView.selectionIndexes.first
         let horizontalItemCount = self.emojiCollectionView.enclosingScrollView?.verticalScroller?.isHidden == true ? 10 : 9
-        switch Int( event.keyCode) {
+        switch Int(event.keyCode) {
         case kVK_DownArrow:
             selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount, filteredEmojiList.count))
             return true
@@ -157,7 +159,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             resetView()
             return true
         case kVK_Return:
-            copySelectedEmojiToPasteboard()
+            var size = 24
+            if (event.modifierFlags.contains(.control)) { size = 36 }
+            if (event.modifierFlags.contains(.option)) { size = 48 }
+            copySelectedEmojiToPasteboard(size: size)
             resetView()
             return true
         default:
