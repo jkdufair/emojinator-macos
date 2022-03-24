@@ -21,4 +21,11 @@ class EmojiItem: NSCollectionViewItem {
             self.view.setNeedsDisplay(self.view.bounds)
         }
     }
+    
+    override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+        let indexPath = self.collectionView?.indexPath(for: self)
+        self.collectionView?.delegate?.collectionView?(self.collectionView!, didSelectItemsAt: [indexPath!])
+    }
+
 }
