@@ -92,7 +92,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         if (self.selectedEmoji == nil) { return }
         let pb = NSPasteboard.general
         pb.clearContents()
-        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\"/>",
+        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\" alt=\":\(self.selectedEmoji!):\" title=\":\(self.selectedEmoji!):\"/>",
                      forType: NSPasteboard.PasteboardType.html)
         let teams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
         if (!teams.isEmpty) {
@@ -123,12 +123,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         if (emojiFilterText == "") {
             filteredEmojiList = emojiList
         } else {
-            let fuse = Fuse(location: 0, distance: 20, threshold: 0.99, maxPatternLength: 32, isCaseSensitive: false, tokenize: false)
+            let fuse = Fuse(location: 0, distance: 100, threshold: 0.35, maxPatternLength: 32, isCaseSensitive: false, tokenize: false)
             let results = fuse.search(emojiFilterText, in: emojiList)
             filteredEmojiList = results.map { (index, _, matchedRanges) in
                 return emojiList[index]
             }
-            filteredEmojiList = Array(filteredEmojiList[0...30])
+            filteredEmojiList = Array(filteredEmojiList[0...min(filteredEmojiList.count - 1, 30)])
         }
         emojiCollectionView.reloadData()
         selectEmoji(newIndex: 0)
