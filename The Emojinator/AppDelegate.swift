@@ -33,7 +33,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let btn = self.statusItem.button
         btn?.action = #selector(statusItemClicked(_:))
         btn?.sendAction(on: [.rightMouseDown])
-        let appIcon = NSImage(named: "teams-dumpsterfire-3")
+        let appIcon = NSImage(named: "MenuBarIcon")
+        appIcon?.isTemplate = true
         btn?.image = appIcon
         
         window?.contentViewController = viewController

@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Fuse",
-        "repositoryURL": "https://github.com/krisk/fuse-swift",
-        "state": {
-          "branch": null,
-          "revision": "26ba868691b2d8b7bf2b1322951eb591be70ccca",
-          "version": "1.4.0"
-        }
-      },
-      {
-        "package": "KeyboardShortcuts",
-        "repositoryURL": "https://github.com/sindresorhus/KeyboardShortcuts",
-        "state": {
-          "branch": "main",
-          "revision": "3017db0d96ccc7f5306037826d6eaaa4e3683cf3",
-          "version": null
-        }
-      },
-      {
-        "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
-        "state": {
-          "branch": null,
-          "revision": "0c02c46cfdc0656ce74fd0963a75e5000a0b7f23",
-          "version": "7.1.2"
-        }
+  "pins" : [
+    {
+      "identity" : "fuse-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krisk/fuse-swift",
+      "state" : {
+        "revision" : "26ba868691b2d8b7bf2b1322951eb591be70ccca",
+        "version" : "1.4.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "keyboardshortcuts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
+      "state" : {
+        "branch" : "main",
+        "revision" : "3017db0d96ccc7f5306037826d6eaaa4e3683cf3"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "0c02c46cfdc0656ce74fd0963a75e5000a0b7f23",
+        "version" : "7.1.2"
+      }
+    }
+  ],
+  "version" : 2
 }

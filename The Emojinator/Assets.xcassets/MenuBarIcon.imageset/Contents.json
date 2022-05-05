@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "teams-dumpsterfire-3.png",
+      "filename" : "MenuBarIcon@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "teams-dumpsterfire.png",
+      "filename" : "MenuBarIcon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
