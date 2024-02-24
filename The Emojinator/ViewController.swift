@@ -166,10 +166,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         let horizontalItemCount = self.emojiCollectionView.enclosingScrollView?.verticalScroller?.isHidden == true ? 10 : 9
         switch Int(event.keyCode) {
         case kVK_DownArrow:
-            selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount, filteredEmojiList.count))
+            selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount + 1, filteredEmojiList.count))
             return true
         case kVK_UpArrow:
-            selectEmoji(newIndex: max(index == nil ? 0 : index! - horizontalItemCount, 0))
+            selectEmoji(newIndex: max(index == nil ? 0 : index! - horizontalItemCount - 1, 0))
             return true
         case kVK_LeftArrow:
             selectEmoji(newIndex: max(index == nil ? 0 : index! - 1, 0))
