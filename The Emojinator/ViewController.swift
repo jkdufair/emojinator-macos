@@ -20,6 +20,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     var emojiList = [String]()
     var filteredEmojiList = [String]()
     var selectedEmoji: String? = nil
+    var isViewVisible = false
     
     override func loadView() {
         super.loadView()
@@ -44,19 +45,6 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             }
         }
     }
-    
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        emojiCollectionView.reloadData()
-        // Visible items is empty until *after* this method completes. So this hack works.
-        // Probably not the most elegant way to do it
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
-        {
-            for item in self.emojiCollectionView.visibleItems() {
-                item.imageView?.animates = true
-            }
-        }
-    }
 
     override var representedObject: Any? {
         didSet { }
@@ -73,7 +61,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])?s=24")
             item.imageView?.kf.indicatorType = .activity
             KF.url(url).set(to: item.imageView!)
-            item.imageView?.animates = false
+        item.imageView?.animates = isViewVisible
             return item
         }
     
@@ -83,9 +71,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         self.emojiFilter.stringValue = ""
         self.emojiFilter.becomeFirstResponder()
         self.filteredEmojiList = self.emojiList
+        self.emojiCollectionView.reloadData()
         for item in emojiCollectionView.visibleItems() {
             item.imageView?.animates = false
         }
+        selectedEmojiView.animates = false
+        self.isViewVisible = false
         self.view.window?.orderOut(nil)
     }
     
@@ -116,6 +107,18 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     }
     
     public func didPopUp() {
+        self.isViewVisible = true
+        emojiCollectionView.reloadData()
+        // Visible items is empty until *after* this method completes. So this hack works.
+        // Probably not the most elegant way to do it
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
+        {
+            for item in self.emojiCollectionView.visibleItems() {
+                item.imageView?.animates = true
+            }
+            self.selectedEmojiView.animates = true
+        }
+
         selectEmoji(newIndex: 0)
     }
     
@@ -153,6 +156,9 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         emojiCollectionView.reloadData()
         if !filteredEmojiList.isEmpty {
             selectEmoji(newIndex: 0)
+        } else {
+            self.selectedEmojiView.image = nil
+            self.emojiLabel.stringValue = ""
         }
     }
     
@@ -163,13 +169,14 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
            NSApplication.shared.keyWindow === locWindow else { return false }
 
         let index = self.emojiCollectionView.selectionIndexes.first
-        let horizontalItemCount = self.emojiCollectionView.enclosingScrollView?.verticalScroller?.isHidden == true ? 10 : 9
+        // Not sure why this changed. What do I look like? A macOS developer?
+        let horizontalItemCount = 10 //self.emojiCollectionView.enclosingScrollView?.verticalScroller?.isHidden == true ? 10 : 9
         switch Int(event.keyCode) {
         case kVK_DownArrow:
-            selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount + 1, filteredEmojiList.count))
+            selectEmoji(newIndex: min(index == nil ? 0 : index! + horizontalItemCount, filteredEmojiList.count))
             return true
         case kVK_UpArrow:
-            selectEmoji(newIndex: max(index == nil ? 0 : index! - horizontalItemCount - 1, 0))
+            selectEmoji(newIndex: max(index == nil ? 0 : index! - horizontalItemCount, 0))
             return true
         case kVK_LeftArrow:
             selectEmoji(newIndex: max(index == nil ? 0 : index! - 1, 0))
