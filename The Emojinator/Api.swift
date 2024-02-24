@@ -16,8 +16,8 @@ class Api : ObservableObject {
             return
         }
         URLSession.shared.dataTask(with: url) { data, response, error in
-            let emojiList = try! JSONDecoder().decode([String].self, from: data!)
             DispatchQueue.main.async {
+                let emojiList = try! JSONDecoder().decode([String].self, from: data!)
                 completion(emojiList)
             }
         }.resume()

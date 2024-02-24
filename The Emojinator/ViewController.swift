@@ -44,6 +44,19 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             }
         }
     }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        emojiCollectionView.reloadData()
+        // Visible items is empty until *after* this method completes. So this hack works.
+        // Probably not the most elegant way to do it
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
+        {
+            for item in self.emojiCollectionView.visibleItems() {
+                item.imageView?.animates = true
+            }
+        }
+    }
 
     override var representedObject: Any? {
         didSet { }
@@ -56,13 +69,13 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
-        let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])?s=24")
-        item.imageView?.kf.indicatorType = .activity
-        KF.url(url).set(to: item.imageView!)
-        item.imageView?.animates = true
-        return item
-    }
+            let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmojiItem"), for: indexPath)
+            let url = URL(string: "https://emoji-server.azurewebsites.net/emoji/\(filteredEmojiList[indexPath[1]])?s=24")
+            item.imageView?.kf.indicatorType = .activity
+            KF.url(url).set(to: item.imageView!)
+            item.imageView?.animates = false
+            return item
+        }
     
     // MARK: Utility functions
     
@@ -70,7 +83,9 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         self.emojiFilter.stringValue = ""
         self.emojiFilter.becomeFirstResponder()
         self.filteredEmojiList = self.emojiList
-        emojiCollectionView.reloadData()
+        for item in emojiCollectionView.visibleItems() {
+            item.imageView?.animates = false
+        }
         self.view.window?.orderOut(nil)
     }
     
@@ -128,10 +143,17 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             filteredEmojiList = results.map { (index, _, matchedRanges) in
                 return emojiList[index]
             }
-            filteredEmojiList = Array(filteredEmojiList[0...min(filteredEmojiList.count - 1, 30)])
+            let atMostThirty = min(max(filteredEmojiList.count - 1, 0), 30)
+            if atMostThirty == 0 {
+                filteredEmojiList = [String]()
+            } else {
+                filteredEmojiList = Array(filteredEmojiList[0...atMostThirty])
+            }
         }
         emojiCollectionView.reloadData()
-        selectEmoji(newIndex: 0)
+        if !filteredEmojiList.isEmpty {
+            selectEmoji(newIndex: 0)
+        }
     }
     
     // Navigation & actions
