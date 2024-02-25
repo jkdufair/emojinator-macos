@@ -100,9 +100,42 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         pb.clearContents()
         pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\" alt=\":\(self.selectedEmoji!):\" title=\":\(self.selectedEmoji!):\"/>",
                      forType: NSPasteboard.PasteboardType.html)
-        let teams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
-        if (!teams.isEmpty) {
-            teams[0].activate(options: NSApplication.ActivationOptions.activateAllWindows)
+        let classicTeams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
+        if (!classicTeams.isEmpty) {
+            let script = """
+            tell application "Microsoft Teams classic" to activate
+            
+            tell application "System Events" to tell application process "Microsoft Teams classic"
+                click menu item "Paste" of menu "Edit" of menu bar item "Edit" of menu bar 1
+            end tell
+            """
+            var error: NSDictionary?
+            if let scriptObject = NSAppleScript(source: script) {
+                if let outputString = scriptObject.executeAndReturnError(&error).stringValue {
+                    print(outputString)
+                } else if (error != nil) {
+                    print("error: ", error!)
+                }
+            }
+        }
+        
+        let newTeams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams2")
+        if (!newTeams.isEmpty) {
+            let script = """
+            tell application "Microsoft Teams (work or school)" to activate
+            
+            tell application "System Events" to tell application process "Microsoft Teams (work or school)"
+                click menu item "Paste" of menu "Edit" of menu bar item "Edit" of menu bar 1
+            end tell
+            """
+            var error: NSDictionary?
+            if let scriptObject = NSAppleScript(source: script) {
+                if let outputString = scriptObject.executeAndReturnError(&error).stringValue {
+                    print(outputString)
+                } else if (error != nil) {
+                    print("error: ", error!)
+                }
+            }
         }
     }
     

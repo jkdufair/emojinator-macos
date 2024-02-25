@@ -4,5 +4,6 @@
 <dict>
 	<key>LSUIElement</key>
 	<true/>
-</dict>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Yo, The Emojinator Needs to Paste to Teams, mmmmkay?</string></dict>
 </plist>
