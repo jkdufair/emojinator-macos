@@ -94,6 +94,12 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         selectedEmojiView.animates = true
     }
     
+    private func copyUrlToPasteboard () {
+        let pb = NSPasteboard.general
+        pb.clearContents()
+        pb.setString("https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)", forType: NSPasteboard.PasteboardType.string)
+    }
+
     private func copySelectedEmojiToPasteboard (size: Int) {
         if (self.selectedEmoji == nil) { return }
         let pb = NSPasteboard.general
@@ -221,6 +227,11 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
             resetView()
             return true
         case kVK_Return:
+            if (event.modifierFlags.contains(.command)) {
+                copyUrlToPasteboard()
+                resetView()
+                return true
+            }
             var size = 24
             if (event.modifierFlags.contains(.control)) { size = 36 }
             if (event.modifierFlags.contains(.option)) { size = 48 }

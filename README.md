@@ -40,3 +40,7 @@ Hold down one of the following modifier keys when selecting an emoji to choose a
 - No modifier: 24px
 - Control: 36px
 - Option: 48px
+
+### Copying the Emoji URL to the clipboard
+
+Hold down Command when pressing Enter to copy the URL of the emoji to the clipboard for pasting into, i.e. GitLab custom emojis
