@@ -106,41 +106,34 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         pb.clearContents()
         pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\" alt=\":\(self.selectedEmoji!):\" title=\":\(self.selectedEmoji!):\"/>",
                      forType: NSPasteboard.PasteboardType.html)
-        let classicTeams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams")
-        if (!classicTeams.isEmpty) {
-            let script = """
-            tell application "Microsoft Teams classic" to activate
-            
-            tell application "System Events" to tell application process "Microsoft Teams classic"
-                click menu item "Paste" of menu "Edit" of menu bar item "Edit" of menu bar 1
+        pasteIntoTeams()
+    }
+
+    // New Teams first; classic Teams kept as a fallback for anyone still on it
+    private static let teamsBundleIds = ["com.microsoft.teams2", "com.microsoft.teams"]
+
+    private func pasteIntoTeams() {
+        guard let bundleId = Self.teamsBundleIds.first(where: {
+            !NSRunningApplication.runningApplications(withBundleIdentifier: $0).isEmpty
+        }) else { return }
+
+        // Address the process by bundle id. `tell application "<name>"` pops a hidden
+        // "Where is ...?" chooser when the name doesn't match the installed app and blocks the main thread.
+        let script = """
+        with timeout of 5 seconds
+            tell application "System Events"
+                tell (first application process whose bundle identifier is "\(bundleId)")
+                    set frontmost to true
+                    click menu item "Paste" of menu "Edit" of menu bar item "Edit" of menu bar 1
+                end tell
             end tell
-            """
+        end timeout
+        """
+        DispatchQueue.global(qos: .userInitiated).async {
             var error: NSDictionary?
-            if let scriptObject = NSAppleScript(source: script) {
-                if let outputString = scriptObject.executeAndReturnError(&error).stringValue {
-                    print(outputString)
-                } else if (error != nil) {
-                    print("error: ", error!)
-                }
-            }
-        }
-        
-        let newTeams = NSRunningApplication.runningApplications(withBundleIdentifier: "com.microsoft.teams2")
-        if (!newTeams.isEmpty) {
-            let script = """
-            tell application "Microsoft Teams (work or school)" to activate
-            
-            tell application "System Events" to tell application process "Microsoft Teams (work or school)"
-                click menu item "Paste" of menu "Edit" of menu bar item "Edit" of menu bar 1
-            end tell
-            """
-            var error: NSDictionary?
-            if let scriptObject = NSAppleScript(source: script) {
-                if let outputString = scriptObject.executeAndReturnError(&error).stringValue {
-                    print(outputString)
-                } else if (error != nil) {
-                    print("error: ", error!)
-                }
+            NSAppleScript(source: script)?.executeAndReturnError(&error)
+            if let error = error {
+                print("paste into Teams failed:", error)
             }
         }
     }
