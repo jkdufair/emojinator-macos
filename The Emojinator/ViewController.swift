@@ -104,7 +104,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSCollectionViewDat
         if (self.selectedEmoji == nil) { return }
         let pb = NSPasteboard.general
         pb.clearContents()
-        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\" alt=\":\(self.selectedEmoji!):\" title=\":\(self.selectedEmoji!):\"/>",
+        // Explicit width/height keep new Teams from wrapping the image in its default large preview frame
+        pb.setString("<meta charset='utf-8'><img src=\"https://emoji-server.azurewebsites.net/emoji/\(self.selectedEmoji!)?s=\(size)\" width=\"\(size)\" height=\"\(size)\" alt=\":\(self.selectedEmoji!):\" title=\":\(self.selectedEmoji!):\"/>",
                      forType: NSPasteboard.PasteboardType.html)
         pasteIntoTeams()
     }
