@@ -18,7 +18,11 @@ The latest release can be found [here](https://github.com/jkdufair/emojinator-ma
 The first time you pick an emoji, macOS asks for two permissions. Approve both, or the emoji lands on your clipboard but is not pasted into Teams:
 
 - **Automation**: "The Emojinator" wants access to control "System Events". Click Allow.
-- **Accessibility**: needed so the app can click Paste in Teams' Edit menu. Open System Settings > Privacy & Security > Accessibility and switch on The Emojinator.
+- **Accessibility**: needed so the app can click Paste in Teams' Edit menu. Open System Settings > Privacy & Security > Accessibility and switch on The Emojinator. If it is not listed, click the plus button and add it from Applications.
+
+### Upgrading from an earlier version
+
+If Teams comes to the front but nothing is pasted after upgrading, the old Accessibility permission is stale. macOS ties it to the app's signature, and 1.4 is signed differently from earlier builds. Quit The Emojinator, open System Settings > Privacy & Security > Accessibility, remove The Emojinator with the minus button, add it back with the plus button from Applications, and relaunch.
 
 ## Usage
 
